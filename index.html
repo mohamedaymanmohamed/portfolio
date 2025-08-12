@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data Analyst Profile Card</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      overflow: hidden;
+      animation: fadeIn 1.2s ease-in-out;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      background: #00acc1;
+      color: #fff;
+    }
+
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      margin-bottom: 1rem;
+      transition: transform 0.5s ease;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    .content {
+      padding: 1rem 2rem;
+    }
+
+    .content ul {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .content li {
+      background: #f1f1f1;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .content li:hover {
+      background: #e0f7fa;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      padding: 1rem 2rem;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      background: #00acc1;
+      color: #fff;
+      padding: 0.7rem;
+      border-radius: 10px;
+      text-align: center;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .buttons a:hover {
+      background: #00838f;
+      transform: scale(1.03);
+    }
+
+    footer {
+      padding: 1.5rem 2rem;
+      font-size: 0.9rem;
+      color: #333;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .card {
+        margin: 1rem;
+      }
+
+      .buttons a {
+        font-size: 0.9rem;
+      }
+
+      .profile-img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <img src="2111.JPG" alt="Profile Image" class="profile-img" />
+      <h1>Mohamed Ayman</h1>
+      <h3>Data Analyst</h3>
+    </div>
+    <div class="content">
+      <ul>
+        <li>Data Science & Analytics</li>
+        <li>BI Tools</li>
+        <li>Python Libraries for Analytics</li>
+      </ul>
+    </div>
+    <div class="buttons">
+      <a href="https://forcast-streamllit-data-science-iizsbbnunhmm8b7mk3ftyx.streamlit.app/" target="_blank">📊 Streamlit Sales Forecast</a>
+      <a href="https://www.linkedin.com/posts/mohamed-ayman-68813b242_aesaevaesaeyaesabraepaesaeqaeyaepaeuaepaes-activity-7324516072286486530-7zna" target="_blank">🎓 DEPI-NTI Project</a>
+      <a href="https://www.linkedin.com/posts/mohamed-ayman-68813b242_powerbi-dataanalysis-finance-activity-7342678869482659841-WONd" target="_blank">💼 Financial Analysis</a>
+    </div>
+    <footer>
+      <p>
+        Detail-oriented Data Analyst with a strong background in Accounting and Financial Management, gained through real-world experience as a General Accountant using Odoo ERP in Egypt.
+        Skilled in end-to-end accounting, financial reporting, and collaborating with cross-functional teams. Certified in Data Analysis by the Egyptian Ministry of Communications, with strong practical experience in data visualization, statistical analysis, and actionable business insights.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

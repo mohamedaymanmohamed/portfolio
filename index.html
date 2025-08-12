@@ -3,73 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Data Analyst Profile Card</title>
+  <title>Data Analyst Portfolio - Mohamed Ayman</title>
+  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
-
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      background: #121212;
+      color: #f5f5f5;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 2rem;
       min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.light-mode {
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      color: #121212;
     }
 
     .card {
-      background: #ffffff;
+      background: rgba(30,30,30,0.7);
+      backdrop-filter: blur(10px);
       border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+      max-width: 900px;
       width: 100%;
       overflow: hidden;
-      animation: fadeIn 1.2s ease-in-out;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, background 0.3s ease;
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      padding: 2rem;
     }
-
+    body.light-mode .card {
+      background: rgba(255,255,255,0.3);
+      color: #121212;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
     .card:hover {
       transform: translateY(-5px);
     }
 
-    .header {
+    .left-section {
+      flex: 1;
+      max-width: 300px;
       text-align: center;
-      padding: 2rem 1rem 1rem;
-      background: #00acc1;
+    }
+    .right-section {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .header {
+      background: rgba(0,96,100,0.8);
+      color: #fff;
+      padding: 1rem 1rem 2rem;
+      border-radius: 20px;
+      position: relative;
+      transition: background 0.3s ease;
+    }
+    body.light-mode .header {
+      background: rgba(0,172,193,0.8);
       color: #fff;
     }
 
     .profile-img {
-      width: 100px;
-      height: 100px;
+      width: 110px; height: 110px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid #fff;
       margin-bottom: 1rem;
-      transition: transform 0.5s ease;
     }
-
-    .profile-img:hover {
-      transform: scale(1.05);
-    }
-
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.8rem; 
       font-weight: 700;
     }
-
     h3 {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 300;
-    }
-
-    .content {
-      padding: 1rem 2rem;
     }
 
     .content ul {
@@ -77,102 +97,402 @@
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+      padding: 1rem 0;
     }
-
     .content li {
-      background: #f1f1f1;
+      background: rgba(42,42,42,0.5);
       padding: 0.7rem 1rem;
       border-radius: 10px;
       text-align: center;
-      transition: background 0.3s;
+      transition: background 0.3s ease;
+    }
+    body.light-mode .content li {
+      background: rgba(255,255,255,0.6);
+      color: #121212;
     }
 
-    .content li:hover {
-      background: #e0f7fa;
-    }
-
-    .buttons {
+    .projects {
       display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      padding: 1rem 2rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
     }
-
-    .buttons a {
-      text-decoration: none;
-      background: #00acc1;
-      color: #fff;
-      padding: 0.7rem;
+    .project-card {
+      position: relative;
       border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      width: 150px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover {
+      transform: scale(1.05);
+    }
+    .project-card img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+      user-select: none;
+      pointer-events: none;
+    }
+    .project-title {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 0.4rem;
+      font-size: 0.9rem;
       text-align: center;
-      transition: background 0.3s ease, transform 0.2s ease;
     }
 
-    .buttons a:hover {
-      background: #00838f;
-      transform: scale(1.03);
+    .certificates {
+      padding: 1rem 0;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .certificates h2 {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+    .certificates img {
+      width: 150px;
+      height: 100px;
+      border-radius: 10px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .certificates img:hover {
+      transform: scale(1.05);
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1rem 0;
+    }
+    .social-icons a {
+      color: #00acc1;
+      font-size: 1.7rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: #00838f;
+      transform: scale(1.2);
     }
 
     footer {
-      padding: 1.5rem 2rem;
-      font-size: 0.9rem;
-      color: #333;
-      line-height: 1.6;
-      background-color: #f9f9f9;
+      padding: 1.5rem 0;
+      font-size: 1rem;
+      background-color: rgba(26,26,26,0.8);
+      color: #ccc;
+      border-radius: 0 0 20px 20px;
+      text-align: center;
+    }
+    body.light-mode footer {
+      background-color: rgba(249,249,249,0.8);
+      color: #121212;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .dark-mode-toggle {
+      position: absolute;
+      top: 15px; right: 15px;
+      font-size: 1.3rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+    }
+    body.light-mode .dark-mode-toggle {
+      color: #121212;
     }
 
-    @media (max-width: 500px) {
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      max-width: 800px;
+      max-height: 90vh;
+      background: #1e1e1e;
+      border-radius: 15px;
+      padding: 1rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+    }
+    body.light-mode .modal-content {
+      background: #fff;
+      color: #121212;
+    }
+    .modal-content img {
+      max-width: 100%;
+      max-height: 70vh;
+      border-radius: 10px;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #fff;
+    }
+    body.light-mode .modal-close {
+      color: #121212;
+    }
+
+    .slider-controls {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    .slider-controls button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: #00acc1;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: 600;
+    }
+    .slider-controls button:hover {
+      background: #00838f;
+    }
+
+    @media (max-width: 768px) {
       .card {
-        margin: 1rem;
+        flex-direction: column;
+        max-width: 480px;
+        padding: 1.5rem;
       }
-
-      .buttons a {
-        font-size: 0.9rem;
+      .left-section {
+        max-width: 100%;
+        margin-bottom: 1.5rem;
       }
-
-      .profile-img {
-        width: 80px;
-        height: 80px;
+      .projects {
+        justify-content: flex-start;
+      }
+      .project-card {
+        width: 100%;
+      }
+      .certificates {
+        flex-direction: column;
+        align-items: center;
+      }
+      .certificates img {
+        width: 80%;
       }
     }
   </style>
 </head>
-<body>
+<body class="dark-mode">
+
   <div class="card">
-    <div class="header">
-      <img src="2111.JPG" alt="Profile Image" class="profile-img" />
-      <h1>Mohamed Ayman</h1>
-      <h3>Data Analyst</h3>
+    <div class="left-section">
+      <div class="header">
+        <button class="dark-mode-toggle" id="darkModeToggle">
+          <i class="fas fa-sun"></i>
+        </button>
+        <img src="2111.JPG" alt="Profile Image" class="profile-img" />
+        <h1>Mohamed Ayman</h1>
+        <h3>Data Analyst</h3>
+      </div>
+
+      <div class="content">
+        <ul>
+          <li>Data Science & Analytics</li>
+          <li>BI Tools</li>
+          <li>Python Libraries for Analytics</li>
+        </ul>
+      </div>
     </div>
-    <div class="content">
-      <ul>
-        <li>Data Science & Analytics</li>
-        <li>BI Tools</li>
-        <li>Python Libraries for Analytics</li>
-      </ul>
+
+    <div class="right-section">
+      <div class="projects">
+        <div class="project-card" data-project="0">
+          <img src="forecast.jpeg" alt="Project 1">
+          <div class="project-title">📊 Streamlit Sales Forecast</div>
+        </div>
+        <div class="project-card" data-project="1">
+          <img src="p2main.jpeg" alt="Project 2">
+          <div class="project-title">🎓 DEPI-NTI Project</div>
+        </div>
+        <div class="project-card" data-project="3">
+          <img src="p4.jpeg" alt="Project 3">
+          <div class="project-title">💼 Financial Analysis</div>
+        </div>
+        <div class="project-card" data-project="2">
+          <img src="p3main.jpeg" alt="Project 4">
+          <div class="project-title">💼 Financial Analysis</div>
+        </div>
+      </div>
+<!-- 
+      <div class="certificates">
+        <h2>📜 Certificates</h2>
+        <img src="nti.png" alt="Certificate 1" class="certificate-img">
+        <img src="" alt="Certificate 2" class="certificate-img">
+      </div> -->
+
+      <div class="social-icons">
+        <a href="https://wa.me/201020367115
+        " target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.linkedin.com/in/mohamed-ayman-68813b242/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/mohamedaymanmohamed?tab=repositories" target="_blank"><i class="fab fa-github"></i></a>
+        <!-- أيقونة تحميل CV -->
+        <a href="Mohamed_Ayman_Data_Analyst_BI_Developer.pdf" download target="_blank"><i class="fas fa-file-pdf"></i></a>
+      </div>
+
+      <footer>
+        <p>
+          Detail-oriented Data Analyst with a strong background in Accounting and Financial Management...
+        </p>
+      </footer>
     </div>
-    <div class="buttons">
-      <a href="https://forcast-streamllit-data-science-iizsbbnunhmm8b7mk3ftyx.streamlit.app/" target="_blank">📊 Streamlit Sales Forecast</a>
-      <a href="https://www.linkedin.com/posts/mohamed-ayman-68813b242_aesaevaesaeyaesabraepaesaeqaeyaepaeuaepaes-activity-7324516072286486530-7zna" target="_blank">🎓 DEPI-NTI Project</a>
-      <a href="https://www.linkedin.com/posts/mohamed-ayman-68813b242_powerbi-dataanalysis-finance-activity-7342678869482659841-WONd" target="_blank">💼 Financial Analysis</a>
-    </div>
-    <footer>
-      <p>
-        Detail-oriented Data Analyst with a strong background in Accounting and Financial Management, gained through real-world experience as a General Accountant using Odoo ERP in Egypt.
-        Skilled in end-to-end accounting, financial reporting, and collaborating with cross-functional teams. Certified in Data Analysis by the Egyptian Ministry of Communications, with strong practical experience in data visualization, statistical analysis, and actionable business insights.
-      </p>
-    </footer>
   </div>
+
+  <div class="modal" id="projectModal">
+    <div class="modal-content">
+      <span class="modal-close" id="closeModal">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <img id="modalImage" src="">
+      <p id="modalDescription" style="margin-top:1rem;"></p>
+      <div class="slider-controls" id="sliderControls" style="display:none;">
+        <button id="prevBtn">Prev</button>
+        <button id="nextBtn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const body = document.body;
+    const toggleBtn = document.getElementById('darkModeToggle');
+    let isDark = true;
+    function updateToggleIcon() {
+      toggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    }
+    toggleBtn.addEventListener('click', () => {
+      isDark = !isDark;
+      if(isDark) {
+        body.classList.add('dark-mode');
+        body.classList.remove('light-mode');
+      } else {
+        body.classList.add('light-mode');
+        body.classList.remove('dark-mode');
+      }
+      updateToggleIcon();
+    });
+    updateToggleIcon();
+
+    const projects = [
+      {
+        title: "📊 Streamlit Sales Forecast",
+        description: "تطبيق Streamlit للتنبؤ بالمبيعات باستخدام نماذج التعلم الآلي.",
+        images: ["forecast.jpeg"]
+      },
+      {
+        title: "🎓 DEPI-NTI Project",
+        description: "مشروع تخرج من DEPI-NTI في تحليل البيانات.",
+        images: ["p2main.jpeg", "p21.jpeg", "p22.jpeg", "p23.jpeg"]
+      },
+      {
+        title: "HR Analysis",
+        description: "HR Dashboard EXCEL",
+        images: ["p4.jpeg"]
+      },
+      {
+        title: "💼 Financial Analysis",
+        description: "تحليل مالي شامل باستخدام Power BI وPython.",
+        images: ["p3main.jpeg"]
+      }
+    ];
+
+    const projectCards = document.querySelectorAll('.project-card');
+    const modal = document.getElementById('projectModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalImage = document.getElementById('modalImage');
+    const modalDescription = document.getElementById('modalDescription');
+    const sliderControls = document.getElementById('sliderControls');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const certificateImgs = document.querySelectorAll('.certificate-img');
+
+    let currentProjectIndex = 0;
+    let currentImageIndex = 0;
+    let isProjectModal = true;
+    let currentImages = [];
+
+    function openModal({title, description, images}) {
+      modalTitle.textContent = title;
+      modalDescription.textContent = description || '';
+      modalImage.src = images[0];
+      sliderControls.style.display = images.length > 1 ? 'flex' : 'none';
+      currentImageIndex = 0;
+      currentImages = images;
+      isProjectModal = true;
+      modal.style.display = 'flex';
+    }
+
+    function openCertificateModal(imgSrc, altText) {
+      modalTitle.textContent = altText;
+      modalDescription.textContent = '';
+      modalImage.src = imgSrc;
+      sliderControls.style.display = 'none';
+      isProjectModal = false;
+      modal.style.display = 'flex';
+    }
+
+    projectCards.forEach(card => {
+      card.addEventListener('click', () => {
+        currentProjectIndex = parseInt(card.dataset.project);
+        openModal(projects[currentProjectIndex]);
+      });
+    });
+
+    certificateImgs.forEach(img => {
+      img.addEventListener('click', () => {
+        openCertificateModal(img.src, img.alt);
+      });
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', e => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+
+    prevBtn.addEventListener('click', () => {
+      if (!isProjectModal) return;
+      currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+      modalImage.src = currentImages[currentImageIndex];
+    });
+    nextBtn.addEventListener('click', () => {
+      if (!isProjectModal) return;
+      currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+      modalImage.src = currentImages[currentImageIndex];
+    });
+  </script>
 </body>
 </html>
